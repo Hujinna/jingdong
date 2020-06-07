@@ -104,14 +104,14 @@
             <</div>
                 <div id="next" class="next">></div>
                 <div class='square'>
-                    <span class='current'></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span value='0' class='current'></span>
+                    <span value='1'></span>
+                    <span value='2'></span>
+                    <span value='3'></span>
+                    <span value='4'></span>
+                    <span value='5'></span>
+                    <span value='6'></span>
+                    <span value='7'></span>
                 </div>
         </div>
         <script src="jquery.js"></script>
@@ -130,6 +130,7 @@
                 index++;
                 if (index >= length) index = 0;
                 changeTo(index);
+                changeTo2(index);
             }
             //点击前进后退箭头
             function changeTo(index) {
@@ -159,8 +160,13 @@
                         $('#next').css('opacity', '0.3');
                     })
                 //小圆点
+            function changeTo2(index) {
+                $('span').eq(index).addClass('current').siblings().removeClass('current');
+            }
             $('span').mouseover(function() {
-                $('span').addClass('current').siblings().removeClass('current');
+                index = parseInt($(this).attr('value'));
+                $(this).addClass('current').siblings().removeClass('current');
+                changeTo(index);
             })
         </script>
 </body>
